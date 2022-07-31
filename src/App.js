@@ -1,25 +1,23 @@
-import logo from './logo.svg';
+import React, {useState} from "react";
 import './App.css';
+import Callback from "./callback"
 
-function App() {
+//Parent
+export default function App() {
+  const [UIcolor, setUIColor] = useState(null);
+
+  //our callback function
+  const getColor = (color) => {
+    setUIColor(color);
+  };
+
+
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <div className="container" style={{background: `${UIcolor}`}}></div>
+      <Callback className="minor" getColor={getColor} />
     </div>
   );
 }
 
-export default App;
